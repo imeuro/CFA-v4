@@ -1,0 +1,37 @@
+
+/**********************************/
+/*        PRINT-ONLY LAYOUT       */
+/**********************************/
+
+body {
+width: 768px;
+margin: 20px auto;
+}
+#main-nav-wrapper {
+left: 0;
+width: 768px;
+}
+h3.wp-caption-text.gallery-caption {
+font-size: 12px;
+}
+
+p {
+  widows:3;
+  orphans: 3;
+  page-break-before: always;
+  font-size: 12px; 
+  line-height: 18px;
+}
+
+#whitecurtain,
+#blackcurtain,
+#blockwindow,
+.container .prevContainer,
+.container .nextContainer,
+.container .selectorsBlock,
+.gallery-item:not(.selected),
+.shareaholic-canvas,
+.posttags {
+  display: none;
+}
+body:after { content: "Copyright 2015 by Conceptual Fine Arts. All Rights Reserved."; font-size:11px;  }

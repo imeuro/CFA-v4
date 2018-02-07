@@ -1,0 +1,57 @@
+[09-Jun-2016 17:57:38 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/index.php on line 8
+[15-Jun-2016 13:10:15 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/404.php on line 8
+[05-Jul-2016 20:11:54 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/404.php on line 8
+[07-Jul-2016 16:07:18 CST6CDT] PHP Fatal error:  Call to undefined function is_admin() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/functions.php on line 18
+[10-Jul-2016 18:55:18 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/index.php on line 8
+[26-Jul-2016 12:02:51 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/404.php on line 8
+[26-Jul-2016 12:03:03 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/404.php on line 8
+[27-Jul-2016 21:35:08 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/404.php on line 8
+[03-Aug-2016 01:10:58 CST6CDT] PHP Fatal error:  Call to undefined function is_admin() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/functions.php on line 18
+[05-Aug-2016 19:28:34 CST6CDT] PHP Fatal error:  Call to undefined function is_admin() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/functions.php on line 18
+[05-Aug-2016 19:39:04 CST6CDT] PHP Fatal error:  Call to undefined function is_admin() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/functions.php on line 18
+[06-Aug-2016 00:39:12 CST6CDT] PHP Fatal error:  Call to undefined function is_admin() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/functions.php on line 18
+[06-Aug-2016 02:54:44 CST6CDT] PHP Fatal error:  Call to undefined function is_admin() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/functions.php on line 18
+[07-Aug-2016 12:38:03 CST6CDT] PHP Fatal error:  Call to undefined function language_attributes() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/header.php on line 2
+[07-Aug-2016 12:38:03 CST6CDT] PHP Fatal error:  Call to undefined function wp_footer() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/footer.php on line 17
+[07-Aug-2016 12:38:04 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/404.php on line 8
+[10-Aug-2016 17:09:46 CST6CDT] PHP Fatal error:  Call to undefined function is_admin() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/functions.php on line 18
+[11-Aug-2016 18:02:11 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/index.php on line 8
+[12-Sep-2016 17:50:53 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/index.php on line 8
+[13-Oct-2016 17:50:32 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/index.php on line 8
+[29-Oct-2016 01:35:37 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/404.php on line 8
+[14-Nov-2016 17:59:43 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3/index.php on line 8
+[19-Mar-2017 17:05:28 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[23-Mar-2017 22:56:48 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[28-Mar-2017 11:35:47 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[14-Aug-2017 05:36:03 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[14-Aug-2017 05:36:03 CST6CDT] PHP Fatal error:  Call to undefined function language_attributes() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/header.php on line 2
+[17-Aug-2017 11:48:28 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/index.php on line 8
+[06-Sep-2017 04:32:36 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/index.php on line 8
+[06-Sep-2017 04:32:36 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/index.php on line 8
+[14-Sep-2017 20:18:36 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[15-Sep-2017 06:34:10 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[18-Sep-2017 19:40:23 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[21-Sep-2017 06:13:54 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[21-Sep-2017 12:35:03 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[21-Sep-2017 23:17:24 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[24-Sep-2017 16:57:39 CST6CDT] PHP Fatal error:  Call to undefined function language_attributes() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/header.php on line 2
+[28-Sep-2017 00:48:25 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[28-Sep-2017 01:18:58 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/404.php on line 8
+[30-Sep-2017 01:42:28 CST6CDT] PHP Fatal error:  Call to undefined function language_attributes() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/header.php on line 2
+[01-Oct-2017 00:30:59 CST6CDT] PHP Fatal error:  Call to undefined function language_attributes() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.1/header.php on line 2
+[07-Dec-2017 05:48:34 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.2/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.2/index.php on line 8
+[07-Dec-2017 05:48:34 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.2/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.2/index.php on line 8
+[07-Dec-2017 05:48:35 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.2/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.2/index.php on line 8
+[07-Dec-2017 05:48:35 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.2/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/imeuro85/public_html/conceptualfinearts.com/cfa/wp-content/themes/CFA_v3.2/index.php on line 8

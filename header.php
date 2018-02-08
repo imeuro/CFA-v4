@@ -148,7 +148,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		<div id="menu_handle" class="mobile">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 15">
-					<g fill="#F5A32F" fill-rule="evenodd">
+					<g fill="#ddd" fill-rule="evenodd">
 						<path class="x" d="m0 7h20v2h-20v-1"></path>
 						<path class="y" d="m0 7h20v2h-20v-1"></path>
 						<path class="a" d="m0 13h20v2h-20v-1"></path>
@@ -162,6 +162,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<li id="about-btn" class="menurev2" data-menu="about"><?php echo $about_us->post_title; ?></li>
 				<li id="patrons-btn" class="menurev2" data-menu="patrons"><?php echo $patrons->post_title; ?></li>
 				<li id="residency-btn" class="menurev2" data-menu="residency"><?php echo $residency->post_title; ?></li>
+				<li id="discla">&copy; 2018 Conceptualfinearts Ltd. <br/> all rights reserved</li>
 			</ul>
 		</div>
 

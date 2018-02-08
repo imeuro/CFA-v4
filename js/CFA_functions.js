@@ -3,7 +3,7 @@
 
 
 var browserWidth = jQuery('html').width();
-var themepath = '/cfa/wp-content/themes/CFA_v3.3/'
+var themepath = '/cfa/wp-content/themes/CFA_v4.0/'
 var modal = jQuery('#modal');
 var modalSwiper = '';
 var fogliaSwiper = '';
@@ -282,7 +282,7 @@ jQuery(window).load(function(){
 
 			var theUrl = jQuery(this).find('.pinbin-image > a').attr('href');
 			var theID = jQuery(this).attr('id');
-			var header = "<div id=\"main-nav-wrapper\" class=\"left on\">\n<div id=\"logo\"></div>\n</div>";
+			var header = "<div id=\"main-nav-wrapper\" class=\"left on\">\n<div id=\"logo\"></div>\n<div id=\"closecard\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 40 40\">\n<g fill=\"#f5a32f\" fill-rule=\"evenodd\">\n<path class=\"x\" d=\"m5 10h10v2h-10v-1\"></path>\n<path class=\"y\" d=\"m10 20h20v2h-20v-1\"></path>\n<path class=\"z\" d=\"m5 30h10v2h-10v-1\"></path>\n</g>\n</svg></div>\n</div>";
 
 			modal.load( theUrl+" #"+theID, function( response, status, xhr ) {
 				console.debug(status);
@@ -294,7 +294,7 @@ jQuery(window).load(function(){
 				if ( status == "success" ) {
 					modal.prepend(header);
 
-					jQuery('#modal #logo').click(function(){
+					jQuery('#modal #logo, #modal #closecard').click(function(){
 						console.debug('click logo');
 						parent.update_url("/");
 						modal.addClass('hidden');
@@ -410,26 +410,16 @@ window.addEventListener('popstate', function(event) {
 });
 
 jQuery(document).ready(function($){
-  var menu = '';
 
-  if (browserWidth>767) {
-
-    var menu = location.hash;
-    jQuery('#logo').click(function(){
+	jQuery('#logo').click(function(){
+	  if (modal.children().length !== 0) {
 			console.debug('click logo');
       parent.update_url("/");
 			modal.addClass('hidden').delay(1000).html('');
-    });
-
-  } else { // mobile
-
-    jQuery('#logo').click(function(){
-			console.debug('click logo mob');
-			window.location.href="/";
-			modal.addClass('hidden').delay(1000).html('');
-    });
-
-  }
+	  } else {
+			window.location.href = "/";
+		}
+	});
 
 	// NAV MENU
 	jQuery('#menu_handle').click(function(){

@@ -284,7 +284,7 @@ jQuery(window).load(function(){
 
 			e.preventDefault();
 
-			modal.removeClass('hidden empty');
+			modal.removeClass('hidden');
 
 			var theUrl = jQuery(this).find('.pinbin-image > a').attr('href');
 			var theID = jQuery(this).attr('id');
@@ -296,6 +296,7 @@ jQuery(window).load(function(){
 				if ( status == "success" ) {
 
 					modal.prepend(header);
+					modal.removeClass('empty');
 
 					// chiudi tutto
 					jQuery('#modal #logo, #modal #closecard').click(function(){
@@ -320,7 +321,6 @@ jQuery(window).load(function(){
 					modalSwiper.on('lazyImageReady', function () {
 						modalSwiper.update();
 					});
-
 
 				}
 

@@ -147,17 +147,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
 		<div id="menu_handle" class="mobile">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 15">
-					<g fill="#ddd" fill-rule="evenodd">
-						<path class="x" d="m0 7h20v2h-20v-1"></path>
-						<path class="y" d="m0 7h20v2h-20v-1"></path>
-						<path class="a" d="m0 13h20v2h-20v-1"></path>
-						<path class="b" d="m0 1h20v2h-20v-1"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+					<g fill="#F5A32F" fill-rule="evenodd">
+						<path class="x" d="m0 16h32v2h-32v-1"></path>
+						<path class="y" d="m0 16h32v2h-32v-1"></path>
+						<path class="a" d="m0 26h32v2h-32v-1"></path>
+						<path class="b" d="m0 6h32v2h-32v-1"></path>
 					</g>
         </svg>
 		</div>
 		<div id="menu-pad">
 			<ul>
+				<li id="menu-logo" class=""><img src="<?php echo get_template_directory_uri().'/images/logo-CFA-orange.svg' ?>" /></li>
 				<li id="menu-btn" class="menurev2" data-menu="menu"><?php echo $menu->post_title; ?></li>
 				<li id="about-btn" class="menurev2" data-menu="about"><?php echo $about_us->post_title; ?></li>
 				<li id="patrons-btn" class="menurev2" data-menu="patrons"><?php echo $patrons->post_title; ?></li>

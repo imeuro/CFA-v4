@@ -142,7 +142,11 @@ jQuery(window).load(function(){
 
 	$container.imagesLoaded().done( function( instance ) {
     console.log('all images successfully loaded');
-    jQuery('#whitecurtain').fadeOut(2000);
+    jQuery('#whitecurtain').addClass('transparent');
+
+		setTimeout(function(){
+	    jQuery('#whitecurtain').addClass('hidden').removeClass('transparent');
+		},2000);
 
     if (browserWidth>767) {
 
@@ -280,24 +284,24 @@ jQuery(window).load(function(){
 
 			e.preventDefault();
 
+			modal.removeClass('hidden empty');
+
 			var theUrl = jQuery(this).find('.pinbin-image > a').attr('href');
 			var theID = jQuery(this).attr('id');
-			var header = "<div id=\"main-nav-wrapper\" class=\"left on\">\n<div id=\"logo\"></div>\n<div id=\"closecard\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 40 40\">\n<g fill=\"#f5a32f\" fill-rule=\"evenodd\">\n<path class=\"x\" d=\"m5 10h10v2h-10v-1\"></path>\n<path class=\"y\" d=\"m10 20h20v2h-20v-1\"></path>\n<path class=\"z\" d=\"m5 30h10v2h-10v-1\"></path>\n</g>\n</svg></div>\n</div>";
+			var header = "<div id=\"main-nav-wrapper\" class=\"left on\">\n<div id=\"logo\"></div>\n<div id=\"closecard\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 16 20\"><g><path d=\"m1 11v-6h7v-4l7 7-7 7v-4z\"/></g></div>\n</div>";
 
 			modal.load( theUrl+" #"+theID, function( response, status, xhr ) {
-				console.debug(status);
-			  if ( status == "error" ) {
-			    var msg = "Apologies, the article at\n"+theUrl+"\nis not available, you'll be redirected to the home page.";
-			    jQuery( modal ).html( "<h2>"+ xhr.status +"</h2><p>"+ msg + "</p><br /><small>" + xhr.statusText + "</small>" );
-			  }
+				// console.debug(status);
 
 				if ( status == "success" ) {
+
 					modal.prepend(header);
 
+					// chiudi tutto
 					jQuery('#modal #logo, #modal #closecard').click(function(){
 						console.debug('click logo');
 						parent.update_url("/");
-						modal.addClass('hidden');
+						modal.addClass('hidden empty');
 						setTimeout(function(){
 							modal.html('');
 						},1000);
@@ -320,8 +324,14 @@ jQuery(window).load(function(){
 
 				}
 
-				modal.removeClass('hidden');
+				if ( status == "error" ) {
+			    var msg = "<div class=\"post\"><p>Apologies, the article at "+theUrl+" is not available</p>\n<p>You'll be redirected to the home page in 5 seconds.</p></div>";
+			    jQuery( modal ).html( header +"<h2>"+ xhr.status + ' ' + xhr.statusText +"</h2>"+ msg  );
+					setTimeout(function(){
+						modal.addClass('hidden empty');
+					},5000);
 
+			  }
 
 			});
 		});
@@ -369,12 +379,17 @@ if (jQuery('body').hasClass('single')) {
 
 function CFA_toggle_menu(what) {
 	var topoffset = jQuery('#wrap').offset().top;
-  jQuery('.home #'+what).fadeOut(500);
+
+	//reset iniziale
+	jQuery('#menu-pad li.menurev2').removeClass('show');
+	jQuery('#blackcurtain').attr('class','');
+	jQuery('#blackcurtain > div').addClass('hidden');
+
   setTimeout(function(){
 		if(browserWidth<640) {
 			jQuery('body').removeClass('menu_open');
 		} else {
-			jQuery('.home #site-navigation').toggleClass('menumode');
+			//jQuery('.home #site-navigation').toggleClass('menumode');
 			jQuery('#'+what+'-btn').removeClass('hidden').toggleClass('show');
 		}
 	},400);
@@ -415,7 +430,7 @@ jQuery(document).ready(function($){
 	  if (modal.children().length !== 0) {
 			console.debug('click logo');
       parent.update_url("/");
-			modal.addClass('hidden').delay(1000).html('');
+			modal.addClass('hidden empty').delay(1000).html('');
 	  } else {
 			window.location.href = "/";
 		}
@@ -430,11 +445,6 @@ jQuery(document).ready(function($){
 	jQuery('#site-navigation #menu-pad li').click(function(){
 		var menuID = jQuery(this).attr('data-menu');
 		CFA_toggle_menu(menuID);
-		if(browserWidth>640) {
-			setTimeout(function(){
-				jQuery('#site-navigation #menu-pad li').toggleClass('hidden');
-			},300);
-		}
 	});
 
   scan_urls();

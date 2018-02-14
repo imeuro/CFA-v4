@@ -15,7 +15,23 @@ $postnum=0;
 while (have_posts()) : the_post();
 $postnum++;
 
+if ($postnum == 3) : // add a fake entry for the patronZ
 ?>
+			<article id="post-meet-the-patrons" class="post type-post format-standard has-post-thumbnail hentry isotope-item">
+				<div class="pinbin-image newitem">
+					<a href="<?php echo get_permalink(7701); ?>" class="left">
+						<img src="https://www.conceptualfinearts.com/cfa/wp-content/uploads/2014/08/Cappella_Scrovegni_enrico-1.jpg" />
+						<div class="pinbin-copy">
+							<p>
+								<strong>MEET OUR PATRONS</strong>
+								<span>Conceptual Fine Arts is independent from art galleries and auction houses. The magazine is made possible by the kind support of its patrons.</span>
+					  	</p>
+						</div>
+					</a>
+				</div>
+			</article>
+<?php endif; ?>
+
       <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
          <?php
@@ -26,7 +42,7 @@ $postnum++;
                   $first_attachment = array_shift($attachments);
                   ?>
               <div class="pinbin-image newitem">
-                <a href="<?php the_permalink() ?>" class="left">
+                <a href="<?php the_permalink(); ?>" class="left">
                   <?php
                   // check if the post has a Post Thumbnail assigned to it.
                   if ( has_post_thumbnail() ) {
@@ -66,6 +82,7 @@ $postnum++;
               </div>
               <?php } ?>
         </article>
+
 <?php endwhile; ?>
 </div>
 <?php else : ?>

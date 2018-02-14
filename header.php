@@ -179,7 +179,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<li id="patrons-btn" class="menurev2" data-menu="patrons"><?php echo $patrons->post_title; ?></li>
 				<li id="residency-btn" class="menurev2" data-menu="residency"><?php echo $residency->post_title; ?></li>
 				<li id="lang-switch" class="menurev2"><?php printLangSwitcher(); ?></li>
-				<li id="discla">&copy; 2018 Conceptualfinearts Ltd. <br/> all rights reserved</li>
+				<li id="discla">&copy; 2018 Conceptual Fine Arts Ltd. <br/> all rights reserved</li>
 			</ul>
 		</div>
 

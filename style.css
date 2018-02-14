@@ -461,7 +461,7 @@ h1, h2, h3, h4, h5, h6 {
 #wrap {
 display: inline-block;
 width: 100%;
-margin-top: 95px;
+margin-top: 155px;
 }
 .home #wrap {
     margin-top: -95px;
@@ -473,13 +473,6 @@ margin-top: 95px;
 
 /* List styles */
 body.home  #main-nav-wrapper {min-height: 150px}
-
-/* moved inside media querues!!!
-#main-nav-wrapper:hover #blockwindow,
-#main-nav-wrapper.show #blockwindow  {
-    top:150px;
-}
-*/
 
 #blackcurtain.show {
   position:fixed;
@@ -873,51 +866,6 @@ padding: 4px 0;
     font-style: normal;
     text-transform: uppercase;
 }
-
-
-footer {
-  position: fixed;
-  z-index: 300;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  background: transparent;
-}
-footer .menuhandle,
-footer .patronshandle,
-footer .residencyhandle {
-  display: none;
-  height: 15px;
-  width: 50px;
-  text-align: center;
-  margin: 0px 20px;
-  padding: 15px;
-  border-radius: 2px;
-  background: #000;
-  color: #fff;
-  font-family: 'alternategothic';
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 18px;
-  float: left;
-}
-footer .patronshandle,
-footer .residencyhandle { float: right; }
-footer .residencyhandle { width: 60px; }
-footer ul {
-  float: left;
-  margin: 0;
-  padding: 0;
-}
-footer ul li {
-  list-style: none;
-  display: inline-block;
-  padding: 0;
-  margin: 10px;
-  float: left;
-  line-height: 24px;
-}
 */
 
 #searchsubmit,.comment-submit,input[type="submit"] {
@@ -1075,6 +1023,8 @@ padding-bottom: 0;
 body.menu_open {
     left: 300px;
     overflow: hidden;
+		position: fixed;
+		width: 100vw;
 }
 body.menu_open #wrap {
     opacity: 0.25;
@@ -1097,8 +1047,11 @@ body.menu_open #wrap {
 transition: left 500ms ease-in-out;
 }
 .menu_open #site-navigation #main-nav-wrapper {
-  left: calc(33% + 300px);
+  left: 33%;
   opacity: .25;
+}
+.home.menu_open #site-navigation #main-nav-wrapper {
+  left: calc(33% + 300px);
 }
 
 
@@ -2145,7 +2098,7 @@ a.search_menu {
   overflow: hidden;
   }
 	.home #wrap {
-	  margin-top: -155px;
+	  margin-top: -55px;
 	}
   h1 {
     font-size: 24px;
@@ -2168,28 +2121,27 @@ a.search_menu {
   a.nextpostlink {
   margin: 20px auto 70px auto;
   }
-  body.home #main-nav-wrapper,
+  body #main-nav-wrapper,
   #modal #main-nav-wrapper {
 		left: 0;
 		min-height: 100px;
 		width: 100vw;
   }
   .home #blackcurtain .whitestripe {display: none;}
-  #blackcurtain #menu-coldx,
-  #blackcurtain #patrons-coldx,
-  #blackcurtain #menu-colsx {
-    width: 80%;
-    padding-top: 0;
+	#blackcurtain {
+    width: 100vw;
+    left: 0;
+	}
+	#blackcurtain #patrons-coldx,
+	#blackcurtain #residency-coldx,
+	#blackcurtain #about-coldx {
     margin: 100px 10% 25px 10%;
-    float: left;
-    position: relative;
-    text-align: center;
-  }
-  #blackcurtain #patrons-coldx,
-  #blackcurtain #residency-coldx {
-    margin: 100px 10% 25px 10%;
+		padding-top: 0;
     width: 80%;
     padding-bottom: 25px;
+		float: left;
+		position: relative;
+		text-align: center;
   }
   #blackcurtain #patrons-colsx {
     width: 80%;
@@ -2277,17 +2229,29 @@ a.search_menu {
 /* For devices with screen size lower than 640px */
 @media only screen and (max-width: 640px) {
   #header { padding-bottom: 45px; }
+	.menu_open #site-navigation #main-nav-wrapper {
+    left: calc( 300px);
+	}
+	.single-post.menu_open #site-navigation #main-nav-wrapper {
+    left: 0;
+	}
   #main-nav-wrapper #logo {
     margin: -17px 0 0 0;
     width: auto;
-		ackground-size: 50%;
+		background-size: 50%;
 		background-position: center;
+		-webkit-tap-highlight-color: transparent;
   }
   #main-nav-wrapper #logo img, #main-nav-wrapper #logo svg {
     margin: 20px 0;
     width: 50%;
     height: auto;
   }
+
+	#modal #closecard {
+    top: 30px;
+    right: 15px;
+	}
 
   div#blockwindow {
     width: 80%;
@@ -2332,7 +2296,7 @@ a.search_menu {
   }
 
   #wrap {
-	  margin: 60px auto;
+	  margin: 80px auto;
 	  overflow: hidden;
   }
   #wrap.fixd {
@@ -2432,6 +2396,28 @@ div.wpcf7-validation-errors {
     background: #000;
     clear: both;
 }
+
+/* WPGlobus adds some weird span to translated article text */
+.home #modal .post .pinbin-copy p span {
+    padding: 0;
+    font-size: 1.8rem;
+    line-height: 3rem;
+    color: #333;
+    text-align: justify;
+    margin: 0;
+    position: initial;
+    text-transform: initial;
+    background: none;
+}
+#menu-pad li#lang-switch {
+    background: transparent;
+    line-height: 16px;
+    text-align: center;
+    font-size: 11px;
+    cursor: initial;
+		color: #888;
+}
+#menu-pad li#lang-switch a {color: #ccc;}
 
 .text-left {text-align: left;}
 .text-center {text-align: center;}

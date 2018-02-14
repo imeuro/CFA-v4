@@ -137,7 +137,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
  	<!-- logo and navigation -->
  <nav id="site-navigation">
+ <?php
+ 	function printLangSwitcher() {
+ 		if ( class_exists( 'WPGlobus' ) ) {
+			//print_r(WPGlobus::Config());
+				echo 'switch language:<br>';
+				foreach( WPGlobus::Config()->enabled_languages as $lang ) {
+					if ( $lang == WPGlobus::Config()->language ) {
+						echo  " ".WPGlobus::Config()->language_name[$lang];
+						continue;
+					}
+					echo ' <a href="' . WPGlobus_Utils::localize_current_url( $lang ). '">' . WPGlobus::Config()->language_name[$lang] . '</a>';
 
+				}
+		}
+	}
+?>
     <div id="main-nav-wrapper" class="<?php if (!is_home() || !is_front_page()) : echo 'single '; endif; ?>left on">
 
         <div id="logo">
@@ -163,6 +178,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<li id="about-btn" class="menurev2" data-menu="about"><?php echo $about_us->post_title; ?></li>
 				<li id="patrons-btn" class="menurev2" data-menu="patrons"><?php echo $patrons->post_title; ?></li>
 				<li id="residency-btn" class="menurev2" data-menu="residency"><?php echo $residency->post_title; ?></li>
+				<li id="lang-switch" class="menurev2"><?php printLangSwitcher(); ?></li>
 				<li id="discla">&copy; 2018 Conceptualfinearts Ltd. <br/> all rights reserved</li>
 			</ul>
 		</div>

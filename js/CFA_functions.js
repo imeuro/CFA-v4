@@ -399,7 +399,7 @@ function CFA_toggle_menu(what) {
   jQuery('#'+what+'-coldx, #'+what+'-colsx').toggleClass('hidden');
   jQuery('.home #'+what).delay(300).fadeIn(300);
 	//tienimi sotto la posizione in cui mi trovo
-	jQuery('#wrap').css('top',(topoffset+95)+'px');
+	//jQuery('#wrap').css('top',(topoffset+95)+'px');
 }
 
 

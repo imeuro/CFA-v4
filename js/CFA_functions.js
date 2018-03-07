@@ -211,15 +211,20 @@ jQuery(window).load(function(){
 
     if (jQuery("#post-area").hasClass('isotope')) {
       $container.children('.newitem').hide();
-
+			jQuery('.post-patrons').each(function(i){
+				if (i >= 1) {
+					jQuery(this).parent().remove();
+				}
+			});
       $container.children('.newitem').fadeIn(500);
       $container.isotope( 'appended', jQuery( newElements ) );
-      setTimeout(function(){$container.isotope('reLayout');}, 1500);
+      setTimeout(function(){$container.isotope('reLayout');}, 1000);
     }
 
     ga('send', 'pageview', '/scroll/'+pageNum);
     //console.log('scroll/'+pageNum);
   });
+
 
 
 });
@@ -260,6 +265,29 @@ var CFAslidersettings = {
 }
 
 
+var RepositionArrows = function(isModal) {
+	if (isModal == true) {
+		var container = "#modal";
+	} else{
+		var container = "body";
+	}
+	var sliderTop = jQuery(container+' #CFAslider').offset().top - jQuery(container+' article').offset().top;
+	var sliderPicH = jQuery(container+' #CFAslider .swiper-slide-active img').height();
+	var arrowH = jQuery(container+' .prevContainer').outerHeight();
+	var arrowW = jQuery(container+' .prevContainer').outerWidth();
+	if (browserWidth > 767) {
+		var ArrHorOffset = jQuery(container+' article .pinbin-copy').offset().left + (arrowW/2);
+	} else {
+		var ArrHorOffset = 0;
+	}
+	var arrowsPosTop = ( sliderTop + (sliderPicH/2) ) - (arrowH/2);
+
+	jQuery(container+' .prevContainer,.nextContainer').css('top',arrowsPosTop);
+	jQuery(container+' .prevContainer').css('left',ArrHorOffset);
+	jQuery(container+' .nextContainer').css('right',ArrHorOffset);
+}
+
+
 // Foglia: actions at window load
 //===============================
 
@@ -280,60 +308,67 @@ jQuery(window).load(function(){
     jQuery('.posttags a').attr('target','_parent'); // ???
   }
   else {
-		jQuery('article.post').click(function(e) {
+		jQuery('article.post:not(.type-post-patrons)').click(function(e) {
 
 			e.preventDefault();
+			var theUrl = jQuery(this).find('div > a').attr('href');
 
-			modal.removeClass('hidden');
+			if (theUrl) {
 
-			var theUrl = jQuery(this).find('.pinbin-image > a').attr('href');
-			var theID = jQuery(this).attr('id');
-			var header = "<div id=\"main-nav-wrapper\" class=\"left on\">\n<div id=\"logo\"></div>\n<div id=\"closecard\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 16 20\"><g><path d=\"m1 11v-6h7v-4l7 7-7 7v-4z\"/></g></div>\n</div>";
+				var theID = jQuery(this).attr('id');
+				var header = "<div id=\"main-nav-wrapper\" class=\"left on\">\n<div id=\"closecard\" class=\"GTMtrack\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 16 20\"><g><path d=\"m1 11v-6h7v-4l7 7-7 7v-4z\"/></g></div>\n</div>";
 
-			modal.load( theUrl+" #"+theID, function( response, status, xhr ) {
-				// console.debug(status);
+				modal.removeClass('hidden');
 
-				if ( status == "success" ) {
+				modal.load( theUrl+" #"+theID, function( response, status, xhr ) {
+					// console.debug(status);
 
-					modal.prepend(header);
-					modal.removeClass('empty');
+					if ( status == "success" ) {
 
-					// chiudi tutto
-					jQuery('#modal #logo, #modal #closecard').click(function(){
-						console.debug('click logo');
-						parent.update_url("/");
-						modal.addClass('hidden empty');
+						modal.prepend(header);
+						modal.removeClass('empty');
+
+						// chiudi tutto
+						jQuery('#modal #logo, #modal #closecard').click(function(){
+							console.debug('click logo');
+							parent.update_url("/cfa");
+							modal.addClass('hidden empty');
+							setTimeout(function(){
+								modal.html('');
+							},1000);
+
+						});
+
+						// modal: Swiper init (see also @ line #348: fogliaSwiper )
+						modalSwiper = new Swiper ('.CFAslider', CFAslidersettings );
+						modalSwiper.init();
 						setTimeout(function(){
-							modal.html('');
+							//console.debug('fogliaSwiper slideTo1');
+							modalSwiper.update();
+							RepositionArrows(true);
 						},1000);
+						modalSwiper.on('slideChangeTransitionEnd', function(){
+							RepositionArrows(true);
+						})
+						modalSwiper.on('lazyImageReady', function () {
+							modalSwiper.update();
+						});
 
-					});
+					}
 
-					// modal: Swiper init (see also @ line #348: fogliaSwiper )
-					modalSwiper = new Swiper ('.CFAslider', CFAslidersettings );
-					//console.debug('modalSwiper init');
-					modalSwiper.init();
-					setTimeout(function(){
-						//console.debug('modalSwiper slideTo1');
-						modalSwiper.update();
-					},1000);
+					if ( status == "error" ) {
+				    var msg = "<div class=\"post type-post type-404\"><h2>"+ xhr.status + ' ' + xhr.statusText +"</h2><p>Apologies, the article at "+theUrl+" is not available</p>\n<p>You'll be redirected to the home page in 5 seconds.</p></div>";
+				    jQuery( modal ).html( header + msg  );
+						setTimeout(function(){
+							modal.addClass('hidden empty');
+						},5000);
+						setTimeout(function(){
+							modal.empty();
+						},500);
 
-					modalSwiper.on('lazyImageReady', function () {
-						modalSwiper.update();
-					});
-
-				}
-
-				if ( status == "error" ) {
-			    var msg = "<div class=\"post\"><p>Apologies, the article at "+theUrl+" is not available</p>\n<p>You'll be redirected to the home page in 5 seconds.</p></div>";
-			    jQuery( modal ).html( header +"<h2>"+ xhr.status + ' ' + xhr.statusText +"</h2>"+ msg  );
-					setTimeout(function(){
-						modal.addClass('hidden empty');
-					},5000);
-
-			  }
-
-			});
+				  }
+				});
+			}
 		});
 
   }
@@ -348,7 +383,7 @@ jQuery(window).load(function(){
 	//===============================
 
   setTimeout(function(){
-  jQuery('ul.crafty-social-buttons-list').append('<li style="margin-left: 40px !important;"><a class="crafty-social-button csb-print" href="?print=enabled" target="_blank" title="Print this Page" rel="nofollow"><img class="crafty-social-button-image" alt="Print this Page" width="48" height="48" src="'+themepath+'images/print.png"></a></li>');
+  jQuery('ul.crafty-social-buttons-list').append('<li><a class="crafty-social-button csb-print" href="?print=enabled" target="_blank" title="Print this Page" rel="nofollow"><img class="crafty-social-button-image" alt="Print this Page" width="30" height="30" src="'+themepath+'images/print.png"></a></li>');
   }, 3000);
 
 });
@@ -359,13 +394,17 @@ jQuery(window).load(function(){
 if (jQuery('body').hasClass('single')) {
 	//console.debug('swiper init for single page');
 	fogliaSwiper = new Swiper ('.CFAslider', CFAslidersettings );
-	//console.debug('fogliaSwiper init');
+
+
 	fogliaSwiper.init();
 	setTimeout(function(){
 		//console.debug('fogliaSwiper slideTo1');
 		fogliaSwiper.update();
+		RepositionArrows();
 	},1000);
-
+	fogliaSwiper.on('slideChangeTransitionEnd', function(){
+		RepositionArrows();
+	})
 	fogliaSwiper.on('lazyImageReady', function () {
 		fogliaSwiper.update();
 	});
@@ -377,7 +416,7 @@ if (jQuery('body').hasClass('single')) {
 // Logo & Menu Functions
 ////////////////////////////////////
 
-function CFA_toggle_menu(what) {
+function CFA_toggle_menu(what,where) {
 	var topoffset = jQuery('#wrap').offset().top;
 
 	//reset iniziale
@@ -397,6 +436,7 @@ function CFA_toggle_menu(what) {
   jQuery('#wrap').toggleClass('fixd');
   jQuery('.sections_menu').parent().click();
   jQuery('#'+what+'-coldx, #'+what+'-colsx').toggleClass('hidden');
+	parent.update_url(where);
   jQuery('.home #'+what).delay(300).fadeIn(300);
 	//tienimi sotto la posizione in cui mi trovo
 	//jQuery('#wrap').css('top',(topoffset+95)+'px');
@@ -420,7 +460,6 @@ function update_url(getUrl) {
 }
 
 window.addEventListener('popstate', function(event) {
-  console.log('popstate..');
   //window.location.reload();
 });
 
@@ -428,11 +467,10 @@ jQuery(document).ready(function($){
 
 	jQuery('#logo').click(function(){
 	  if (modal.children().length !== 0) {
-			console.debug('click logo');
-      parent.update_url("/");
+      parent.update_url("/cfa");
 			modal.addClass('hidden empty').delay(1000).html('');
 	  } else {
-			window.location.href = "/";
+			window.location.href = "/cfa";
 		}
 	});
 
@@ -444,7 +482,8 @@ jQuery(document).ready(function($){
 	});
 	jQuery('#site-navigation #menu-pad li').click(function(){
 		var menuID = jQuery(this).attr('data-menu');
-		CFA_toggle_menu(menuID);
+		var menuURL = jQuery(this).attr('data-url');
+		CFA_toggle_menu(menuID, menuURL);
 	});
 
   scan_urls();

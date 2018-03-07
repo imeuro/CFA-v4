@@ -8,7 +8,7 @@
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-   		<div id="post-<?php the_ID(); ?>" <?php post_class('scroller'); ?>>
+   		<article id="post-<?php the_ID(); ?>" <?php post_class('scroller'); ?>>
 
         <?php if (!get_field('author_name')) :  // old format ?>
           <small class="date"><?php the_time('F j, Y'); ?></small><br />
@@ -50,7 +50,7 @@
           <div class="clear"></div>
         	<?php //comments_template(); ?>
 
-       </div>
+       </article>
 
 		<?php endwhile; endif; ?>
 

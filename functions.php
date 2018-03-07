@@ -302,19 +302,10 @@ function CFA_gallery_shortcode($attr) {
 
 	$i = 0;
 	foreach ( $attachments as $id => $attachment ) {
-		/*
-		if ( ! empty( $attr['link'] ) && 'file' === $attr['link'] )
-			$image_output = wp_get_attachment_link( $id, $size, false, false );
-		elseif ( ! empty( $attr['link'] ) && 'none' === $attr['link'] )
-			$image_output = wp_get_attachment_image( $id, $size, false, array( "alt" => wptexturize($attachment->post_excerpt) ) );
-		else
-			$image_output = wp_get_attachment_link( $id, $size, true, false );
-		*/
-
-			$image_output = "<img data-src=\"";
-			$image_output .= wp_get_attachment_image_src( $id, $size, false )[0];
-			$image_output .= "\" class=\"swiper-lazy\" />\n";
-      $image_output .= "<div class=\"swiper-lazy-preloader\"></div>";
+		$image_output = "<img data-src=\"";
+		$image_output .= wp_get_attachment_image_src( $id, $size, false )[0];
+		$image_output .= "\" class=\"swiper-lazy\" />\n";
+    $image_output .= "<div class=\"swiper-lazy-preloader\"></div>";
 
 		$image_meta  = wp_get_attachment_metadata( $id );
 
@@ -348,12 +339,17 @@ function CFA_gallery_shortcode($attr) {
 
 		$output .= "\n
 		<div class=\"swiper-pagination\"></div>\n
+		</div>\n
 		<div class=\"prevContainer\"></div>\n
-		<div class=\"nextContainer\"></div>\n";
+		<div class=\"nextContainer\"></div>\n\n";
+
+	else:
+
+		$output .= "</div>\n\n";
 
 	endif;
 
-	$output .= "</div>\n\n";
+
 
 	return $output;
 }

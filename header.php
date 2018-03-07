@@ -61,7 +61,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <h3><a href="<?php echo get_permalink( get_page_by_path( 'newsletter' ) ).'#menu'; ?>" title="NEWSLETTER">NEWSLETTER</a></h3>
 
-        <h3 class="clickable"><a class="search_menu">SEARCH</a></h3>
+        <h3 class="clickable"><a class="search_menu GTMtrack">SEARCH</a></h3>
         <div class="search_submenu submenu hidden"><?php get_search_form(); ?></div>
 
         <h3><a href="<?php echo get_permalink( get_page_by_path( 'hashcloud' ) ).'#menu'; ?>" title="A-Z index">A-Z INDEX</a></h3>
@@ -76,6 +76,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span>
         <?php
         $about_us = get_post( 1 );
+				//print_r($about_us);
         $title = $about_us->post_title;
         $content =  apply_filters('the_content',$about_us->post_content);
         $About_BGimage = wp_get_attachment_image_src( get_post_thumbnail_id( $about_us->ID ), 'large', false );
@@ -138,9 +139,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  	<!-- logo and navigation -->
  <nav id="site-navigation">
  <?php
- 	function printLangSwitcher() {
+ 	function printLangSwitcher($format='normal') {
  		if ( class_exists( 'WPGlobus' ) ) {
-			//print_r(WPGlobus::Config());
+
+			if ($format == 'compact') {
+				//print_r(WPGlobus::Config());
+				foreach( WPGlobus::Config()->enabled_languages as $lang ) {
+					if ( $lang == WPGlobus::Config()->language ) {
+						echo  "<span>".$lang."</span>";
+						continue;
+					}
+					echo ' <a href="' . WPGlobus_Utils::localize_current_url( $lang ). '">' . $lang . '</a>';
+				}
+			} else {
 				echo 'switch language:<br>';
 				foreach( WPGlobus::Config()->enabled_languages as $lang ) {
 					if ( $lang == WPGlobus::Config()->language ) {
@@ -150,6 +161,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					echo ' <a href="' . WPGlobus_Utils::localize_current_url( $lang ). '">' . WPGlobus::Config()->language_name[$lang] . '</a>';
 
 				}
+			}
+
 		}
 	}
 ?>
@@ -171,13 +184,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</g>
         </svg>
 		</div>
+		<div id="lang-switcher"><?php printLangSwitcher('compact'); ?></div>
 		<div id="menu-pad">
 			<ul>
-				<li id="menu-logo" class=""><img src="<?php echo get_template_directory_uri().'/images/logo-CFA-orange.svg' ?>" /></li>
-				<li id="menu-btn" class="menurev2" data-menu="menu"><?php echo $menu->post_title; ?></li>
-				<li id="about-btn" class="menurev2" data-menu="about"><?php echo $about_us->post_title; ?></li>
-				<li id="patrons-btn" class="menurev2" data-menu="patrons"><?php echo $patrons->post_title; ?></li>
-				<li id="residency-btn" class="menurev2" data-menu="residency"><?php echo $residency->post_title; ?></li>
+				<li id="menu-btn" class="menurev2 GTMtrack" data-menu="menu" data-url="<?php echo get_permalink($menu->ID); ?>"><?php echo $menu->post_title; ?></li>
+				<li id="about-btn" class="menurev2 GTMtrack" data-menu="about" data-url="<?php echo get_permalink($about_us->ID); ?>"><?php echo $about_us->post_title; ?></li>
+				<li id="patrons-btn" class="menurev2 GTMtrack" data-menu="patrons" data-url="<?php echo get_permalink($patrons->ID); ?>"><?php echo $patrons->post_title; ?></li>
+				<li id="residency-btn" class="menurev2 GTMtrack" data-menu="residency" data-url="<?php echo get_permalink($residency->ID); ?>"><?php echo $residency->post_title; ?></li>
 				<li id="lang-switch" class="menurev2"><?php printLangSwitcher(); ?></li>
 				<li id="discla">&copy; 2018 Conceptual Fine Arts Ltd. <br/> all rights reserved</li>
 			</ul>
@@ -187,4 +200,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="clear"></div>
 <div id="wrap">
-  <div id="header"></div>
